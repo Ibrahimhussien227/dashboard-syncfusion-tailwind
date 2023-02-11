@@ -8,6 +8,17 @@ const change = (args) => {
     args.currentValue.hex;
 };
 
+const CustomColorPicker = ({ id, mode }) => (
+  <ColorPickerComponent
+    id={id}
+    mode={mode}
+    modeSwitcher={false}
+    inline
+    showButtons={false}
+    change={change}
+  />
+);
+
 const ColorPicker = () => (
   <div className="m-2 md:m-10 mt-24 p-2 md:p-10 bg-white rounded-3xl">
     <Header category="App" title="Color Picker" />
@@ -17,25 +28,11 @@ const ColorPicker = () => (
       <div className="flex justify-center items-center gap-20 flex-wrap">
         <div>
           <p className="text-2xl font-semibold mt-2 mb-4">Inline Pallete</p>
-          <ColorPickerComponent
-            id="inline-palette"
-            mode="Palette"
-            modeSwitcher={false}
-            inline
-            showButtons={false}
-            change={change}
-          />
+          <CustomColorPicker id="inline-palette" mode="Palette" />
         </div>
         <div>
           <p className="text-2xl font-semibold mt-2 mb-4">Picker Pallete</p>
-          <ColorPickerComponent
-            id="pciker-palette"
-            mode="Picker"
-            modeSwitcher={false}
-            inline
-            showButtons={false}
-            change={change}
-          />
+          <CustomColorPicker id="picker-palette" mode="Picker" />
         </div>
       </div>
     </div>

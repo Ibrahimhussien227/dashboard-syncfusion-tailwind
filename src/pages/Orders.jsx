@@ -14,11 +14,7 @@ import {
   Inject,
 } from "@syncfusion/ej2-react-grids";
 
-import {
-  ordersData,
-  //  contextMenuItems,
-  ordersGrid,
-} from "../data/dummy";
+import { ordersData, contextMenuItems, ordersGrid } from "../data/dummy";
 import { Header } from "../components";
 
 const Orders = () => (
@@ -29,6 +25,10 @@ const Orders = () => (
       dataSource={ordersData}
       allowPaging
       allowSorting
+      allowExcelExport
+      allowPdfExport
+      contextMenuItems={contextMenuItems}
+      editSettings={{ allowDeleting: true, allowEditing: true }}
     >
       <ColumnsDirective>
         {ordersGrid.map((item, i) => (

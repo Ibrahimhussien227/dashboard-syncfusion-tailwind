@@ -13,9 +13,9 @@ const Kanban = () => (
     <Header category="App" title="Kanban" />
     <KanbanComponent
       id="kanban"
+      keyField="Status"
       dataSource={kanbanData}
       cardSettings={{ contentField: "Summary", headerField: "Id" }}
-      keyField="Status"
     >
       <ColumnsDirective>
         {kanbanGrid.map((item, i) => (

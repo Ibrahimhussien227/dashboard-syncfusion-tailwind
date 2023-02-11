@@ -393,7 +393,7 @@ export const FinancialPrimaryYAxis = {
   majorTickLines: { width: 0 },
 };
 
-export const LinePrimaryXAxis = {
+export const linePrimaryXAxis = {
   valueType: "DateTime",
   labelFormat: "y",
   intervalType: "Years",
@@ -402,7 +402,7 @@ export const LinePrimaryXAxis = {
   background: "white",
 };
 
-export const LinePrimaryYAxis = {
+export const linePrimaryYAxis = {
   labelFormat: "{value}%",
   rangePadding: "None",
   minimum: 0,
@@ -864,8 +864,8 @@ export const themeColors = [
     color: "#1E4DB7",
   },
   {
-    color: "#FB9678",
     name: "orange-theme",
+    color: "#FB9678",
   },
 ];
 

@@ -24,6 +24,7 @@ const Customers = () => (
       allowPaging
       allowSorting
       toolbar={["Delete"]}
+      selectionSettings={{ persistSelection: true }}
       editSettings={{
         allowDeleting: true,
         allowEditing: true,

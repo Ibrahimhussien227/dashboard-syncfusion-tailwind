@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { FiSettings } from "react-icons/fi";
 import { TooltipComponent } from "@syncfusion/ej2-react-popups";
 
-import { Navbar, Footer, Sidebar, ThemeSettings } from "./components";
+import { Navbar, Footer, Sidebar, ThemeSetting } from "./components";
 import {
   Ecommerce,
   Orders,
@@ -26,10 +26,27 @@ import "./App.css";
 import { useStateContext } from "./contexts/ContextProvider";
 
 const App = () => {
-  const { activeMenu } = useStateContext();
+  const {
+    activeMenu,
+    ThemeSettings,
+    setThemeSettings,
+    currentColor,
+    currentMode,
+    setCurrentColor,
+    setCurrentMode,
+  } = useStateContext();
+
+  useEffect(() => {
+    const currentThemeColor = localStorage.getItem("colorMode");
+    const currentThemeMode = localStorage.getItem("themeMode");
+    if (currentThemeColor && currentThemeMode) {
+      setCurrentColor(currentThemeColor);
+      setCurrentMode(currentThemeMode);
+    }
+  }, []);
 
   return (
-    <div>
+    <div className={currentMode === "Light" ? "" : "dark"}>
       <BrowserRouter>
         <div className="flex relative dark:bg-main-dark-bg">
           <div className="fixed right-4 bottom-4" style={{ zIndex: "1000" }}>
@@ -37,7 +54,8 @@ const App = () => {
               <button
                 type="button"
                 className="text-3xl p-3 hover:drop-shadow-xl hover:bg-light-gray text-white rounded-full"
-                style={{ background: "black" }}
+                style={{ background: currentColor }}
+                onClick={() => setThemeSettings(true)}
               >
                 <FiSettings />
               </button>
@@ -60,7 +78,7 @@ const App = () => {
             </div>
 
             <div>
-              <ThemeSettings />
+              {ThemeSettings && <ThemeSetting />}
 
               <Routes>
                 {/* Dashboard */}
@@ -89,6 +107,7 @@ const App = () => {
                 <Route path="/stacked" element={<Stacked />} />
               </Routes>
             </div>
+            <Footer />
           </div>
         </div>
       </BrowserRouter>
